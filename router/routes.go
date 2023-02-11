@@ -12,7 +12,7 @@ func Routes(app *fiber.App) {
 	app.Route("/auth", func(router fiber.Router) {
 		router.Post("/register", controllers.SignUpUser)
 		router.Post("/login", controllers.SignUpUser)
-		router.Post("/logout", middleware.DeserializeUser, controllers.LogoutUser)
+		router.Get("/logout", middleware.DeserializeUser, controllers.LogoutUser)
 	})
 
 	app.Route("/users", func(router fiber.Router) {
