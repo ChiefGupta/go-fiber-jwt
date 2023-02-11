@@ -1,15 +1,29 @@
 package router
 
 import (
+	"fmt"
+
+	"github.com/ChiefGupta/go-fiber-jwt/controllers"
+	"github.com/ChiefGupta/go-fiber-jwt/middleware"
 	"github.com/gofiber/fiber/v2"
 )
 
 func Routes(app *fiber.App) {
-	app.Route("/users", func(router fiber.Router) {
-
+	app.Route("/auth", func(router fiber.Router) {
+		router.Post("/register", controllers.SignUpUser)
+		router.Post("/login", controllers.SignUpUser)
+		router.Post("/logout", middleware.DeserializeUser, controllers.LogoutUser)
 	})
 
-	app.Route("/users/:userId", func(router fiber.Router) {
+	app.Route("/users", func(router fiber.Router) {
+		router.Get("/me", middleware.DeserializeUser, controllers.GetMe)
+	})
 
+	app.All("*", func(c *fiber.Ctx) error {
+		path := c.Path()
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"status":  "fail",
+			"message": fmt.Sprintf("Path: %v does not exists on this server", path),
+		})
 	})
 }
