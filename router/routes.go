@@ -11,7 +11,7 @@ import (
 func Routes(app *fiber.App) {
 	app.Route("/auth", func(router fiber.Router) {
 		router.Post("/register", controllers.SignUpUser)
-		router.Post("/login", controllers.SignUpUser)
+		router.Post("/login", controllers.SignInUser)
 		router.Get("/logout", middleware.DeserializeUser, controllers.LogoutUser)
 	})
 
