@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/ChiefGupta/go-fiber-postgres/models"
+	"github.com/ChiefGupta/go-fiber-jwt/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

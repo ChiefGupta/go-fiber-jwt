@@ -53,18 +53,6 @@ func FilterUserRecord(user *User) UserResponse {
 	}
 }
 
-type CreateUserSchema struct {
-	Username string `json:"username" validate:"required"`
-	Email    string `json:"email" validate:"required"`
-	Password string `json:"password" validate:"required"`
-}
-
-type UpdateUserSchema struct {
-	Username string `json:"username,omitempty"`
-	Email    string `json:"email,omitempty"`
-	Password string `json:"password,omitempty"`
-}
-
 var validate = validator.New()
 
 type ErrorResponse struct {

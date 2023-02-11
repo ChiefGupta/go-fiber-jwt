@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ChiefGupta/go-fiber-postgres/initializers"
-	"github.com/ChiefGupta/go-fiber-postgres/models"
+	"github.com/ChiefGupta/go-fiber-jwt/initializers"
+	"github.com/ChiefGupta/go-fiber-jwt/models"
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt"
 	"golang.org/x/crypto/bcrypt"
