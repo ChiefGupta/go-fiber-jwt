@@ -7,15 +7,24 @@ import (
 )
 
 type Config struct {
-	DBHost         string        `mapstructure:"POSTGRES_HOST"`
-	DBUserName     string        `mapstructure:"POSTGRES_USER"`
-	DBUserPassword string        `mapstructure:"POSTGRES_PASSWORD"`
-	DBName         string        `mapstructure:"POSTGRES_DB"`
-	DBPort         string        `mapstructure:"POSTGRES_PORT"`
-	ServerPort     string        `mapstructure:"SERVER_PORT"`
-	JwtSecret      string        `mapstructure:"JWT_SECRET"`
-	JwtExpiresIn   time.Duration `mapstructure:"JWT_EXPIRES_IN"`
-	JwtMaxAge      int           `mapsturcture:"JWT_MAX_AGE"`
+	DBHost         string `mapstructure:"POSTGRES_HOST"`
+	DBUserName     string `mapstructure:"POSTGRES_USER"`
+	DBUserPassword string `mapstructure:"POSTGRES_PASSWORD"`
+	DBName         string `mapstructure:"POSTGRES_DB"`
+	DBPort         string `mapstructure:"POSTGRES_PORT"`
+	ServerPort     string `mapstructure:"SERVER_PORT"`
+
+	ClientOrigin string `mapstructure:"CLIENT_ORIGIN"`
+	RedisUri     string `mapstructure:"REDIS_URL"`
+
+	AccessTokenPrivateKey  string        `mapstructure:"ACCESS_TOKEN_PRIVATE_KEY"`
+	AccessTokenPublicKey   string        `mapstructure:"ACCESS_TOKEN_PUBLIC_KEY"`
+	RefreshTokenPrivateKey string        `mapstructure:"REFRESH_TOKEN_PRIVATE_KEY"`
+	RefreshTokenPublicKey  string        `mapstructure:"REFRESH_TOKEN_PUBLIC_KEY"`
+	AccessTokenExpiresIn   time.Duration `mapstructure:"ACCESS_TOKEN_EXPIRED_IN"`
+	RefreshTokenExpiresIn  time.Duration `mapstructure:"REFRESH_TOKEN_EXPIRED_IN"`
+	AccessTokenMaxAge      int           `mapstructure:"ACCESS_TOKEN_MAXAGE"`
+	RefreshTokenMaxAge     int           `mapstructure:"REFRESH_TOKEN_MAXAGE"`
 }
 
 func LoadConfig(path string) (config Config, err error) {
